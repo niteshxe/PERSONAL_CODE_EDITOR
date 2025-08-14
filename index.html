@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code Editor</title>
+
+    <!-- Load JSZip first -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+    <!-- Load Monaco Editor loader script -->
+    <script>
+      var require = {
+        paths: {
+          vs: "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.38.0/min/vs",
+        },
+      };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.38.0/min/vs/loader.js"></script>
+
+    <!-- Remix Icon: For file and folder icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h2>Code Editor Js</h2>
+
+    <div class="controls">
+      <input
+        type="number"
+        id="fontSize"
+        value="24"
+        min="10"
+        max="35"
+        onchange="updateFontSize()"
+      />
+
+      <!-- Add or update the Run button in your HTML -->
+      <button onclick="runCode()" title="Run Code (Ctrl+Enter)">
+        <i class="ri-play-circle-line"></i>
+        Run
+      </button>
+
+      <button onclick="importFolder()">
+        <i class="ri-folder-upload-line"></i> Import Folder
+      </button>
+
+      <button onclick="exportFolder()">
+        <i class="ri-folder-download-line"></i> Download Folder
+      </button>
+
+      <button onclick="clearConsole()">
+        <i class="ri-delete-bin-line"></i> Clear Console
+      </button>
+
+      <button id="toggleConsoleBtn" onclick="toggleConsole()">
+        <i class="ri-eye-off-line"></i> Hide Console
+      </button>
+    </div>
+
+    <div class="container">
+      <div id="file-explorer">
+        <div class="file-controls">
+          <button onclick="addFile()">
+            <i class="ri-file-add-line"></i><span> Add File</span>
+          </button>
+          <button onclick="addFolder()">
+            <i class="ri-folder-add-line"></i><span> Add Folder</span>
+          </button>
+        </div>
+        <h4>Files Manager</h4>
+        <div id="file-tree-container" class="file-tree-container"></div>
+      </div>
+      <div id="editor-container">
+        <div id="editor"></div>
+      </div>
+      <div id="divider"></div>
+      <div id="console-wrapper">
+        <div id="console"></div>
+      </div>
+    </div>
+
+    <div id="contextMenu" class="context-menu"></div>
+    <input type="file" id="folderInput" webkitdirectory style="display: none" />
+    <input type="file" id="fileInput" style="display: none" />
+
+    <script src="script.js"></script>
+  </body>
+</html>
