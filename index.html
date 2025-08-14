@@ -25,67 +25,70 @@
     />
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
-    <h2>Code Editor Js</h2>
-
-    <div class="controls">
-      <input
-        type="number"
-        id="fontSize"
-        value="24"
-        min="10"
-        max="35"
-        onchange="updateFontSize()"
-      />
-
-      <!-- Add or update the Run button in your HTML -->
-      <button onclick="runCode()" title="Run Code (Ctrl+Enter)">
-        <i class="ri-play-circle-line"></i>
-        Run
-      </button>
-
-      <button onclick="importFolder()">
-        <i class="ri-folder-upload-line"></i> Import Folder
-      </button>
-
-      <button onclick="exportFolder()">
-        <i class="ri-folder-download-line"></i> Download Folder
-      </button>
-
-      <button onclick="clearConsole()">
-        <i class="ri-delete-bin-line"></i> Clear Console
-      </button>
-
-      <button id="toggleConsoleBtn" onclick="toggleConsole()">
-        <i class="ri-eye-off-line"></i> Hide Console
-      </button>
-    </div>
+  <body> <header class="editor-header">
+      <h2 class="editor-title">DSA Code Editor</h2>
+      <div class="header-controls">
+        <button onclick="addFile()" title="Add a new file">
+          <i class="ri-file-add-line"></i> Add File
+        </button>
+        <button onclick="addFolder()" title="Add a new folder">
+          <i class="ri-folder-add-line"></i> Add Folder
+        </button>
+        <button onclick="runCode()" title="Run code (Ctrl+Enter)">
+          <i class="ri-play-circle-line"></i> Run
+        </button>
+        <button onclick="clearConsole()" title="Clear the console output">
+          <i class="ri-delete-bin-line"></i> Clear
+        </button>
+       
+        <button onclick="exportFolder()" title="Download project as a ZIP">
+          <i class="ri-folder-download-line"></i> Export
+        </button>
+        <button onclick="importFolder()" title="Import a folder">
+          <i class="ri-folder-upload-line"></i> Import
+        </button>
+        <span class="font-size-control">
+          Font Size:
+          <input
+            type="number"
+            id="fontSize"
+            value="24"
+            min="10"
+            max="35"
+            onchange="updateFontSize()"
+          />
+        </span>
+      </div>
+    </header>
 
     <div class="container">
       <div id="file-explorer">
-        <div class="file-controls">
-          <button onclick="addFile()">
-            <i class="ri-file-add-line"></i><span> Add File</span>
-          </button>
-          <button onclick="addFolder()">
-            <i class="ri-folder-add-line"></i><span> Add Folder</span>
-          </button>
-        </div>
-        <h4>Files Manager</h4>
+        <h4 class="panel-title">File Explorer</h4>
         <div id="file-tree-container" class="file-tree-container"></div>
       </div>
+
+      <div id="explorer-divider"></div>
+
       <div id="editor-container">
         <div id="editor"></div>
       </div>
+
       <div id="divider"></div>
+
       <div id="console-wrapper">
+        <h4 class="panel-title">Console</h4>
         <div id="console"></div>
       </div>
     </div>
 
     <div id="contextMenu" class="context-menu"></div>
+    <div id="custom-alert-container"></div>
+    <div id="custom-confirm-container"></div>
+
     <input type="file" id="folderInput" webkitdirectory style="display: none" />
     <input type="file" id="fileInput" style="display: none" />
+
+   
 
     <script src="script.js"></script>
   </body>
