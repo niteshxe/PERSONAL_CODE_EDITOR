@@ -612,3 +612,14 @@ button {
 ::-webkit-scrollbar-corner {
   background: #2d2d30;
 }
+#file-explorer {
+  transition: all 0.3s ease;
+}
+
+#file-explorer.hidden {
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+
