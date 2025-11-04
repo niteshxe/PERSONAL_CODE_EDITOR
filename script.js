@@ -1091,3 +1091,18 @@ async function clearDatabase() {
 }
 
 addClearDBButton();
+function toggleFileExplorer() {
+  const fileExplorer = document.getElementById("file-explorer");
+  const divider = document.getElementById("explorer-divider");
+
+  // Toggle display
+  if (fileExplorer.style.display === "none") {
+    fileExplorer.style.display = "block";
+    divider.style.display = "block";
+  } else {
+    fileExplorer.style.display = "none";
+    divider.style.display = "none";
+  }
+}
+
+
